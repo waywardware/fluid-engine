@@ -1,0 +1,33 @@
+{
+  "name": "fluid-engine",
+  "version": "0.1.0",
+  "description": "a simple, RxJs based, 2D game engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+      "build": "tsc",
+    "test": "npm-p lint"
+  },
+  "keywords": [
+    "2D",
+    "game",
+    "engine"
+  ],
+  "author": "Angel Bouzo <angelb7574@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "rxjs": "^6.3.3"
+  },
+  "devDependencies": {
+    "@types/uuid": "^3.4.4",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.1.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-terser": "^4.0.3",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4",
+    "uuid": "^3.3.2"
+  }
+}
