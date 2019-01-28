@@ -44,7 +44,7 @@ export function DEFAULT_DRAW_SPRITE({canvas, context, objects}: {canvas: HTMLCan
     });
 }
 
-export function initRenderer(canvasId: string, drawFunction: ({canvas, context, objects}: any) => void) {
+export function initRenderer(canvasId: string) {
     fromEvent(window, "load").subscribe(() => setCanvas$.next(canvasId));
-    renderer$.subscribe(drawFunction);
+    return renderer$;
 }
