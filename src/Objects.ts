@@ -24,15 +24,15 @@ export const onAddObjectEvent$ = addObject$.pipe(
         }
         return gameObject;
     }),
-    map<IGameObject, IEvent>((obj) => ({
+    map<IGameObject, IEvent<IGameObject>>((obj: IGameObject) => ({
         data: obj,
         type: EventType.ADD,
-    })),
+    }))
 );
 
 export const onRemoveObjectEvent$ = removeObject$.pipe(
     filter((id) => true), // TODO sanitize
-    map<string, IEvent>((id) => ({
+    map<string, IEvent<string>>((id) => ({
         data: id,
         type: EventType.REMOVE,
     })),
@@ -42,13 +42,13 @@ export const objects$ = merge(
     onAddObjectEvent$,
     onRemoveObjectEvent$,
 ).pipe(
-    scan<IEvent, Map<string, IGameObject>>((store: Map<string, IGameObject>, item: IEvent) => {
+    scan<IEvent<IGameObject | string>, Map<string, IGameObject>>((store: Map<string, IGameObject>, item: IEvent<IGameObject | string>) => {
         switch (item.type) {
             case EventType.ADD:
-                const obj: IGameObject = item.data;
+                const obj: IGameObject = item.data as IGameObject;
                 return store.set(obj.id, obj);
             case EventType.REMOVE:
-                const id: string = item.data;
+                const id: string = item.data as string;
                 if (id) {
                     store.delete(id);
                 }

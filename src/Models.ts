@@ -3,15 +3,20 @@ export interface IPoints {
     y: number;
 }
 
+export interface ITimeObject {
+    deltaTime: number,
+    time: number,
+}
+
 export enum EventType {
     ADD,
     REMOVE,
     COLLISION,
 }
 
-export interface IEvent {
+export interface IEvent<T> {
     type: EventType;
-    data: any;
+    data: T;
 }
 
 export interface IInitialGameObjectData {
