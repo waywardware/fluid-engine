@@ -4,6 +4,10 @@ node_js:
 npm:
   - "6"
 
+script:
+  - npm run build
+  - npm run test
+
 deploy:
   provider: npm
   email: $email
