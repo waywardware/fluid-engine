@@ -4,10 +4,6 @@ node_js:
 npm:
   - "6"
 
-branches:
-  only:
-    - master
-
 matrix:
   include:
     - os: linux
@@ -22,6 +18,7 @@ deploy:
   api_key: $api_token
   on:
     tags: true
+    all_branches: true
   email: 
   skip_cleanup: true
 
