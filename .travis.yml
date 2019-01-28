@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+  - "11"
+npm:
+  - "6"
+
+branches:
+  only:
+    - master
+
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: trusty
+    - os: osx
+      osx_image: xcode7.3
+
+deploy:
+  provider: npm
+  email: $email
+  api_key: $api_token
+  on:
+    tags: true
+  email: 
+  skip_cleanup: true
+
+cache:
+  directories:
+    - node_modules
